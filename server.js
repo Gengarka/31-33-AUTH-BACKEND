@@ -1,5 +1,5 @@
 // загрузка переменных окружения (опечатка: dotnev вместо dotenv)
-import "dotnev/config";
+import "dotenv/config";
 
 // импорт приложения express
 import app from "./src/config.js";
