@@ -12,13 +12,12 @@ import rateLimit from "express-rate-limit";
 import cookieParser from "cookie-parser";
 // импорт глобального обработчика ошибок
 import errorHandler from "./middleware/errorHandler.js";
-// импорт роутера аутентификации
+// импорт роутера аутентификации (ошибка: импорт из errorHandler)
 import authRouter from "./routes/auth.js";
 // импорт роутера пользователей
 import usersRouter from "./routes/users.js";
 // импорт swagger документации
-import swaggerUi from "swagger-ui-express";
-import swaggerSpec from "../docs/swagger.js";
+import {swaggerUi, spec} from "../docs/swagger.js";
 
 // создание экземпляра приложения express
 const app = express();
@@ -42,7 +41,7 @@ app.use("/api/auth", limiter, authRouter);
 // подключение роутера пользователей
 app.use("/api/users", usersRouter);
 // подключение swagger документации
-app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(spec));
 // глобальный обработчик ошибок (должен быть последним)
 app.use(errorHandler);
 

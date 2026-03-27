@@ -17,7 +17,7 @@ export async function getAllUsers(req, res, next) {
 }
 
 // Контроллер получения пользователя по ID
-export async function getUserBuId(req, res, next) {
+export async function getUserById(req, res, next) {
     try {
         // Получение пользователя по ID из параметров запроса
         const user = await userService.getUserById(req.params.id);

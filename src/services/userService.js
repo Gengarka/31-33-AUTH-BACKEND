@@ -11,5 +11,5 @@ export async function getAllUsers() {
 
 // сервис получения пользователя по id (опечатка: fundUserById вместо findUserById)
 export async function getUserById(id) {
-    return fundUserById(id);
+    return findUserById(id);
 }

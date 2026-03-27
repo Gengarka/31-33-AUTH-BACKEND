@@ -12,7 +12,7 @@ import config from "../config.js";
 import jwt from "jsonwebtoken";
 
 // сервис регистрации нового пользователя
-export async function refister(email, password) {
+export async function register(email, password) {
     // проверка существования пользователя с таким email
     const existingUser = await findUserByEmail(email);
     if(existingUser) {
