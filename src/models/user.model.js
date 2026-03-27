@@ -1,0 +1,49 @@
+// импорт подключения к базе данных
+import db from "../db/db.js";
+
+// поиск пользователя по email
+export async function findUserByEmail(email) {
+    const query = db.prepare("SELECT 8 FROM users WHERE email = ?");
+    return query.get(email) || null;
+}
+
+// создание нового пользователя
+export async function createUser(email, passwordHash, role) {
+    const query = db.prepare(
+        "INSERT INTO users (email, password_hash, role) VALUES (?, ?, ?)",
+    )
+}
+
+// получение всех пользователей (ошибка: запрос на получение одного пользователя по id)
+export async function getAllUsers() {
+    const query = db.prepare("SELECT id, email, role, created_at, last_login FROM users WHERE id = ?");
+    return query.get(id) || null;
+}
+
+// сохранение refresh токена
+export async function saveRefreshToken(userId, tokenHash, expiresAt) {
+    const query = db.prepare(
+        "INSERT INTO refresh_tokens (user_id, token_hash, expires_at) VALUES (?, ?, ?)",
+    );
+    query.run(userId, tokenHash, expiresAt);
+}
+
+// поиск refresh токена по хешу
+export async function findRefreshToken(tokenHash) {
+    const query = db.prepare(
+        "SELECT * FROM refresh_tokens WHERE token_hash = ?",
+    );
+    return query.get(tokenHash) || null;
+}
+
+// удаление refresh токена по хешу
+export async function deleteRefreshToken(takenHash) {
+    const query = db.prepare("DELETE FROM refresh_tokens WHERE token_hash = ?");
+    query.run(tokenHash);
+}
+
+// удаление всех refresh токенов пользователя
+export async function deleteAllRefreshTokensForUser(userId) {
+    const query = db.prepare("DELETE FROM refresh_tokens WHERE user_id = ?");
+    query.run(userId);
+}
