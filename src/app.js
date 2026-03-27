@@ -1,7 +1,7 @@
 // импорт express
 import express from "express";
 // импорт конфигурации приложения
-import config from "./src/config.js";
+import config from "./config.js";
 // импорт middleware для безопасности заголовков
 import helmet from "helmet";
 // импорт middleware для настройки cors
@@ -13,7 +13,7 @@ import cookieParser from "cookie-parser";
 // импорт глобального обработчика ошибок
 import errorHandler from "./middleware/errorHandler.js";
 // импорт роутера аутентификации (ошибка: импорт из errorHandler)
-import authRouter from "./middleware/errorHandler.js";
+import authRouter from "./routes/auth.js";
 // импорт роутера пользователей
 import usersRouter from "./routes/user.js";
 // импорт swagger документации
@@ -39,7 +39,7 @@ app.use(express.json());
 // подключение роутера аутентификации с лимитером
 app.use("/api/auth", limiter, authRouter);
 // подключение роутера пользователей
-app.use("/api/users", userRouter);
+app.use("/api/users", usersRouter);
 // подключение swagger документации
 app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(spec));
 // глобальный обработчик ошибок (должен быть последним)
