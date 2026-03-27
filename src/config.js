@@ -1,7 +1,7 @@
 // загрузка переменных окружения из .env файла
 import "dotenv/config";
 // импорт функции генерации секрета для разработки
-import generateSecret from "./utils/generateSecret";
+import generateSecret from "./utils/generateSecret.js";
 
 // объект конфигурации приложения
 const config = {

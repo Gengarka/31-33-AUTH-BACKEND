@@ -13,3 +13,4 @@ export default function generateSecret(name) {
         console.warn(`[config] ${name} не установлен, используем сгенерированный секрет (только для разработки):`, generated);
         return generated;
 }
+
