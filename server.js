@@ -2,7 +2,7 @@
 import "dotenv/config";
 
 // импорт приложения express
-import app from "./src/config.js";
+import app from "./src/app.js";
 // импорт конфигурации (дублирование импорта)
 import config from "./src/config.js";
 // импорт подключения к базе данных
@@ -18,7 +18,7 @@ const startServer = async () => {
         });
     } catch (error) {
         // обработка ошибки запуска (опечатка: err вместо error)
-        console.error("Не удалость запустить сервер:", err);
+        console.error("Не удалость запустить сервер:", error);
     }
 };
 
