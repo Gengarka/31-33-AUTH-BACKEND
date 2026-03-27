@@ -6,7 +6,7 @@ import config from "../config.js";
 // Создание подключения к базе данных
 const db = new Database(config.db.path, {
     // Включение логирования запросов в режиме разработки
-    verbose: confog.nodeEnv === "development" ? console.log : undefined,
+    verbose: config.nodeEnv === "development" ? console.log : undefined,
 });
 
 // Включение поддержки внешних ключей
