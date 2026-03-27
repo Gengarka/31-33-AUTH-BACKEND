@@ -17,15 +17,15 @@ export async function createUser(email, passwordHash, role) {
     }
 
 // ищем пользователя по айди
-export async function findUseryId(id) {
-    const query = db.prepare("SELECT id, email, role, created_at, last_login, FROM users WHERE id = ?");
+export async function findUserById(id) {
+    const query = db.prepare("SELECT id, email, role, created_at, last_login FROM users WHERE id = ?");
     return query.get(id) || null;
 }
 
 // получение всех пользователей 
 export async function getAllUsers() {
-    const query = db.prepare("SELECT id, email, role, created_at, last_login FROM users WHERE id = ?");
-    return query.get(id) || null;
+    const query = db.prepare("SELECT id, email, role, created_at, last_login FROM users");
+    return query.all();
 }
 
 // сохранение refresh токена
